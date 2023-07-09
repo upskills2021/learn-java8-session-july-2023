@@ -12,7 +12,9 @@ public class Student {
     private String gender;
     private int noteBooks;
     List<String> activities = new ArrayList<>();
+    public Student() {
 
+    }
     public Student(Integer id, String name, int gradeLevel, double gpa, String gender, int noteBooks, List<String> activities) {
         this.id = id;
         this.name = name;
@@ -91,7 +93,9 @@ public class Student {
     public int hashCode() {
         return Objects.hash(getId(), getName(), getGradeLevel(), getGpa(), getGender(), getNoteBooks(), getActivities());
     }
-
+    public void displayActivities() {
+        System.out.println(activities);
+    }
     @Override
     public String toString() {
         return "Student{" +
