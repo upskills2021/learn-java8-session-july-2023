@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 
 public class StreamSortExample {
     public static void main(String[] args) {
-        Consumer<Student> studentConsumer = (s) -> System.out.println(s);
+        Consumer<Student> studentConsumer = System.out::println;
         sortStudentsByName().forEach(studentConsumer);
     }
 
     private static List<Student> sortStudentsByName() {
         return StudentDatabase.getAllStudents()
                 .stream()
-                .sorted(Comparator.comparing(Student::getGradeLevel).reversed()
-                        .thenComparing(Student::getId))
+                .sorted(Comparator.comparing(Student::getGradeLevel)
+                        .thenComparing(Student::getId, Comparator.reverseOrder()))
                 .collect(Collectors.toList());
     }
 }
