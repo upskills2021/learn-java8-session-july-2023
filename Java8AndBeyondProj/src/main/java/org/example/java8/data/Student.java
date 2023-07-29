@@ -3,6 +3,7 @@ package org.example.java8.data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class Student {
     private Integer id;
@@ -11,6 +12,7 @@ public class Student {
     private double gpa;
     private String gender;
     private int noteBooks;
+    private Optional<Bike> optionalBike= Optional.empty();
     List<String> activities = new ArrayList<>();
     public Student() {
 
@@ -88,7 +90,13 @@ public class Student {
         Student student = (Student) o;
         return getGradeLevel() == student.getGradeLevel() && Double.compare(student.getGpa(), getGpa()) == 0 && getNoteBooks() == student.getNoteBooks() && Objects.equals(getId(), student.getId()) && Objects.equals(getName(), student.getName()) && Objects.equals(getGender(), student.getGender()) && Objects.equals(getActivities(), student.getActivities());
     }
+    public Optional<Bike> getOptionalBike() {
+        return optionalBike;
+    }
 
+    public void setOptionalBike(Optional<Bike> optionalBike) {
+        this.optionalBike = optionalBike;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getName(), getGradeLevel(), getGpa(), getGender(), getNoteBooks(), getActivities());

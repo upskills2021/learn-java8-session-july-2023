@@ -2,6 +2,7 @@ package org.example.java8.data;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public final class StudentDatabase {
@@ -32,5 +33,10 @@ public final class StudentDatabase {
         Supplier<List<Student>> supplier = () -> getAllStudents();
         return supplier;
     }
-
+    public static Supplier<Student> getStudentSupplier() {
+        Student student = new Student(1,"Adam",2,3.6, "male",10,Arrays.asList("swimming", "basketball","volleyball"));
+        student.setOptionalBike(Optional.of(new Bike("BMW", "x10")));
+        Supplier<Student> supplier = () -> student;
+        return supplier;
+    }
 }
